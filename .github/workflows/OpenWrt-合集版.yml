@@ -3,18 +3,18 @@ name:  OpenWrt-合集版
 on: 
   workflow_dispatch:
   schedule:
-    - cron: 30 00 * * 5
+    - cron: 01 00 * * 5
 
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: OK2.config
+  CONFIG_FILE: OK1.config
   DIY_P1_SH: DIY-1.sh
   DIY_P2_SH: DIY-2.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  UPLOAD_RELEASE: true
+  UPLOAD_BIN_DIR: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -143,13 +143,14 @@ jobs:
       with:
         name: OpenWrt-Mini${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
-
+        
     - name: Upload bin directory
       uses: actions/upload-artifact@main
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: openwrt/bin        
+        path: openwrt/bin
+
 
     - name: 创建发布标签
       id: tag
@@ -160,7 +161,7 @@ jobs:
         echo "OpenWrt-Mini_ X86_64-合集版（支持ipv6）" >> release.txt
         echo "默认地址：192.168.2.100" >> release.txt
         echo "默认密码：无密码" >> release.txt
-        echo "插件清单：ShadowSocksR Plus+，PassWall，OpenClash" >> release.txt
+        echo "插件清单：ShadowSocksR Plus+" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布新版固件
@@ -188,4 +189,3 @@ jobs:
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
