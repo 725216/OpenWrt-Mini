@@ -14,6 +14,7 @@ env:
   DIY_P2_SH: DIY-2.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
@@ -142,6 +143,15 @@ jobs:
       with:
         name: OpenWrt-Mini${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
+
+    - name: Upload bin directory
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin        
+
+
 
     - name: 创建发布标签
       id: tag
