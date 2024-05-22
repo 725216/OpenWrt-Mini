@@ -151,8 +151,6 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin        
 
-
-
     - name: 创建发布标签
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
