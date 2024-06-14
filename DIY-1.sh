@@ -19,4 +19,4 @@ echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >
 echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/muink/luci-app-homeproxy.git package/luci-app-homeproxy
-git clone https://github.com/xiaoxiao29/luci-app-adguardhome.git
+git clone https://github.com/rufengsuixing/luci-app-adguardhome.git
