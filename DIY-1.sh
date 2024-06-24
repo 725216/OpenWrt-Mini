@@ -20,5 +20,3 @@ echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-pa
 git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
 git clone https://github.com/muink/luci-app-homeproxy.git package/luci-app-homeproxy
 git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/luci-app-adguardhome
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
