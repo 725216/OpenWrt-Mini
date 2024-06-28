@@ -12,6 +12,7 @@ env:
   CONFIG_FILE: OK1.config
   DIY_P1_SH: DIY-1.sh
   DIY_P2_SH: DIY-2.sh
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
@@ -135,7 +136,14 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
-
+        
+    - name: Upload bin directory
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
+        
     - name: 打包上传固件
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
@@ -149,10 +157,10 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "OpenWrt-Mini_ X86_64-基础版（支持ipv6）" >> release.txt
-        echo "默认地址：192.168.2.100" >> release.txt
-        echo "默认密码：无密码" >> release.txt
-        echo "插件清单：ShadowSocksR Plus+" >> release.txt
+        echo "OpenWrt-lean_ Zbtlink ZBT-WE1326 （支持ipv6）" >> release.txt
+        echo "默认地址：192.168.123.1" >> release.txt
+        echo "默认密码：password" >> release.txt
+        echo "插件清单：openclash.vssr等" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布新版固件
