@@ -1,9 +1,8 @@
 name:  OpenWrt-合集版
 
-on: 
+on:
+  repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 1 0 * * *
 
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt
