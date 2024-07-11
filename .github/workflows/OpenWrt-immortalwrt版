@@ -1,4 +1,4 @@
-name:  OpenWrt-合集版
+name:  OpenWrt-immortalwrt版
 
 on:
   repository_dispatch:
@@ -151,7 +151,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} -合集版
+        name: ${{ env.FILE_TIME }} -immortalwrt版
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
