@@ -1,4 +1,4 @@
-name:  OpenWrt-基础版
+name:  OpenWrt-lean版
 
 on:
   repository_dispatch:
@@ -168,7 +168,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} -基础版
+        name: ${{ env.FILE_TIME }} -lean版
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
