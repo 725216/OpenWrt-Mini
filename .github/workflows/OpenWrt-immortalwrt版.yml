@@ -13,7 +13,7 @@ env:
   DIY_P2_SH: DIY-2.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -156,15 +156,6 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
         
-    - name: Upload BIN to release
-      uses: softprops/action-gh-release@master
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.BIN_DIR }}/*
         
     - name: 清理编译流程
       uses: Mattraks/delete-workflow-runs@main
