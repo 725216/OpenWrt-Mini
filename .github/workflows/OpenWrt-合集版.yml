@@ -12,8 +12,9 @@ env:
   CONFIG_FILE: OK2.config
   DIY_P1_SH: DIY-1.sh
   DIY_P2_SH: DIY-2.sh
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
