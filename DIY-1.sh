@@ -21,3 +21,11 @@ git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages package/
 # 移除 openwrt feeds 过时的luci版本
 rm -rf feeds/luci/applications/luci-app-passwall
 git clone https://github.com/Openwrt-Passwall/openwrt-passwall package/passwall-luci
+
+git clone https://github.com/gdy666/luci-app-lucky.git package/luci-app-lucky
+git clone https://github.com/sirpdboy/luci-app-taskplan package/luci-app-taskplan
+git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone https://github.com/linkease/istore.git package/istore
+
+git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/nikk
